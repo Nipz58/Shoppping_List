@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping List</title>
+</head>
+
+<body>
+	<h1>Grocery shopping list</h1>
+	<button onclick="add()">Add new item</button>
+	<button onclick="display()">Display list</button>
+	<button onclick="empty()">Empty the list</button>
+
+	<script type="text/javascript">
+
+
+		function add(){
+			var td = JSON.parse(localStorage.getItem("list"))
+			var newtd = prompt("Enter the new item")
+			td.push(newtd)
+			localStorage.setItem("list", JSON.stringify(td))
+		}	
+
+		function display() {
+			var storedlist = JSON.parse(localStorage.getItem("list"))
+			for(i = storedlist.length; i--; i>=0){
+			document.write(`<h2>${storedlist[i]}</h2>`)
+			}
+		}
+
+		function empty(){
+			var td = []
+			localStorage.setItem("list", JSON.stringify(td))
+		}
+	
+	</script>
+
+
+</body>
+</html>
